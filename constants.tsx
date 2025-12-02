@@ -37,35 +37,35 @@ export const LEVEL_LINKS: LevelLink[] = [
   {
     id: 'level-1-2',
     label: 'Level -1 & 2',
-    url: 'https://ai.studio/apps/drive/1e61G98_jKXOaZEFS13Ebo8-jmrKzoIhD?fullscreenApplet=true',
+    url: 'https://chem-bond-mastery.vercel.app/',
     color: 'from-blue-500 to-cyan-400',
     icon: <IconLevel1 />
   },
   {
     id: 'level-3',
     label: 'Level 3',
-    url: 'https://ai.studio/apps/drive/1QRnt9YX3Gl7A0-w2yw96gnBEhNg3B_Xn?fullscreenApplet=true',
+    url: 'https://vsepr-beta.vercel.app/',
     color: 'from-emerald-500 to-teal-400',
     icon: <IconLevel3 />
   },
   {
     id: 'level-4',
     label: 'Level 4',
-    url: 'https://ai.studio/apps/drive/1FyspMIKK6i1rzZ9QR4UCeZHsXuxBVAqt?fullscreenApplet=true',
+    url: 'https://polar-or-nah-molecular-challenge-8j.vercel.app/',
     color: 'from-amber-500 to-orange-400',
     icon: <IconLevel4 />
   },
   {
     id: 'level-5',
     label: 'Level 5',
-    url: 'https://ai.studio/apps/drive/17X9_0pteEXTITvkvaotR3giYznlTODiV?fullscreenApplet=true',
+    url: 'https://orbital-master-mo-theory-level-5.vercel.app/',
     color: 'from-rose-500 to-pink-500',
     icon: <IconLevel5 />
   },
   {
     id: 'level-6',
     label: 'Level 6',
-    url: 'https://ai.studio/apps/drive/1jQeQEYWVATGw4WUrQVEVwFR4agcHt7JX?fullscreenApplet=true',
+    url: 'https://orbital-matches.vercel.app/',
     color: 'from-violet-600 to-purple-500',
     icon: <IconLevel6 />
   }
