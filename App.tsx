@@ -3,25 +3,9 @@ import LevelButton from './components/LevelButton';
 import { LEVEL_LINKS } from './constants';
 
 const App: React.FC = () => {
-  // Authentication state - App starts closed (false)
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [passwordInput, setPasswordInput] = useState('');
-  const [errorMsg, setErrorMsg] = useState('');
-
   // Navigation state
   const [activeLevel, setActiveLevel] = useState<string | null>(null);
   const [iframeKey, setIframeKey] = useState(0);
-
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (passwordInput === 'google') {
-      setIsAuthenticated(true);
-      setErrorMsg('');
-    } else {
-      setErrorMsg('Incorrect password');
-      setPasswordInput('');
-    }
-  };
 
   const handleReturn = () => {
     setActiveLevel(null);
@@ -43,79 +27,39 @@ const App: React.FC = () => {
     setIframeKey(0);
   };
 
-  // Render Lock Screen if not authenticated
-  if (!isAuthenticated) {
-    return (
-      <div className="flex h-screen flex-col items-center justify-center bg-slate-900 text-slate-100 p-4">
-        <div className="text-center space-y-6 max-w-lg w-full">
-          <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-slate-800">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-12 w-12 text-slate-400">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-            </svg>
-          </div>
-          <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            App Closed
-          </h1>
-          <p className="text-lg text-slate-400">
-            The training portal is currently locked. Please enter the password to access.
-          </p>
-          
-          <form onSubmit={handleLogin} className="mt-8 flex flex-col gap-4 max-w-xs mx-auto w-full">
-            <div>
-              <input
-                type="password"
-                value={passwordInput}
-                onChange={(e) => setPasswordInput(e.target.value)}
-                placeholder="Enter password"
-                className="w-full rounded-lg bg-slate-800 border border-slate-700 px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                autoFocus
-              />
-              {errorMsg && (
-                <p className="mt-2 text-sm text-red-400 font-medium animate-pulse">{errorMsg}</p>
-              )}
-            </div>
-            <button
-              type="submit"
-              className="w-full rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 px-4 py-3 font-semibold text-white shadow-lg transition-all hover:from-blue-500 hover:to-cyan-500 hover:shadow-blue-500/20 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-              disabled={!passwordInput}
-            >
-              Unlock App
-            </button>
-          </form>
-          
-          <div className="pt-4">
-            <span className="inline-flex items-center rounded-full bg-slate-800 px-3 py-1 text-xs font-medium text-slate-500 ring-1 ring-inset ring-slate-700">
-              Restricted Access
-            </span>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="flex h-screen flex-col bg-slate-900 text-slate-100">
       {/* Top Navigation Bar */}
-      <nav className="flex-none sticky top-0 z-50 flex items-center justify-between border-b border-slate-800 bg-slate-900/90 px-4 py-4 backdrop-blur-md sm:px-6 lg:px-8">
-        <button
-          onClick={handleReturn}
-          className="group flex items-center gap-2 rounded-lg bg-slate-800 px-4 py-2 text-sm font-medium text-slate-200 transition-all hover:bg-slate-700 hover:text-white active:scale-95"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-5 w-5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
-          </svg>
-          Return
-        </button>
+      <nav className="flex-none sticky top-0 z-50 border-b border-slate-800 bg-slate-900/95 px-4 py-3 backdrop-blur-md sm:px-6 lg:px-8 shadow-md">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handleReturn}
+              className="group flex items-center gap-2 rounded-lg bg-slate-800 px-4 py-2 text-sm font-medium text-slate-200 transition-all hover:bg-slate-700 hover:text-white active:scale-95 border border-slate-700 hover:border-slate-600"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-4 w-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+              </svg>
+              Return
+            </button>
 
-        <button
-          onClick={handleReload}
-          className="group flex items-center gap-2 rounded-lg bg-slate-800 px-4 py-2 text-sm font-medium text-slate-200 transition-all hover:bg-slate-700 hover:text-white active:scale-95"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-5 w-5 transition-transform duration-500 group-hover:rotate-180">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-          </svg>
-          Reload
-        </button>
+            <button
+              onClick={handleReload}
+              className="group flex items-center gap-2 rounded-lg bg-slate-800 px-4 py-2 text-sm font-medium text-slate-200 transition-all hover:bg-slate-700 hover:text-white active:scale-95 border border-slate-700 hover:border-slate-600"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-4 w-4 transition-transform duration-500 group-hover:rotate-180">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+              </svg>
+              Reload
+            </button>
+          </div>
+
+          <div className="text-center sm:text-right">
+             <span className="inline-block rounded-full bg-indigo-900/30 px-4 py-1.5 text-xs font-bold text-indigo-200 ring-1 ring-inset ring-indigo-500/40 sm:text-sm tracking-wide shadow-sm">
+                App made by Shobhit and Aarush class XI -A
+             </span>
+          </div>
+        </div>
       </nav>
 
       {/* Main Content Area */}
@@ -130,12 +74,12 @@ const App: React.FC = () => {
             allowFullScreen
           />
         ) : (
-          <div className="h-full overflow-y-auto px-4 py-12 sm:px-6 lg:px-8">
+          <div className="h-full overflow-y-auto px-4 py-12 sm:px-6 lg:px-8 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent">
             <div className="mx-auto max-w-7xl">
               {/* Header Section */}
               <div className="mb-12 text-center sm:mb-16">
-                <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl drop-shadow-sm">
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">
                     Training Modules
                   </span>
                 </h1>
