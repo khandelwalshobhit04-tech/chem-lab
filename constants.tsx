@@ -39,34 +39,39 @@ export const LEVEL_LINKS: LevelLink[] = [
     label: 'Level -1 & 2',
     url: 'https://chem-bond-mastery.vercel.app/',
     color: 'from-blue-500 to-cyan-400',
-    icon: <IconLevel1 />
+    icon: <IconLevel1 />,
+    description: 'Master the basics of Chemical Bonding'
   },
   {
     id: 'level-3',
     label: 'Level 3',
     url: 'https://vsepr-beta.vercel.app/',
     color: 'from-emerald-500 to-teal-400',
-    icon: <IconLevel3 />
+    icon: <IconLevel3 />,
+    description: 'VSEPR Theory & Molecular Geometry'
   },
   {
     id: 'level-4',
     label: 'Level 4',
     url: 'https://polar-or-nah-molecular-challenge-8j.vercel.app/',
     color: 'from-amber-500 to-orange-400',
-    icon: <IconLevel4 />
+    icon: <IconLevel4 />,
+    description: 'Polar or Nah: Molecular Polarity Challenge'
   },
   {
     id: 'level-5',
     label: 'Level 5',
     url: 'https://orbital-master-mo-theory-level-5.vercel.app/',
     color: 'from-rose-500 to-pink-500',
-    icon: <IconLevel5 />
+    icon: <IconLevel5 />,
+    description: 'Advanced MO Theory Mastery'
   },
   {
     id: 'level-6',
     label: 'Level 6',
     url: 'https://orbital-matches.vercel.app/',
     color: 'from-violet-600 to-purple-500',
-    icon: <IconLevel6 />
+    icon: <IconLevel6 />,
+    description: 'The Ultimate Orbital Matching Challenge'
   }
 ];

@@ -19,7 +19,7 @@ const LevelButton: React.FC<LevelButtonProps> = ({ link, onSelect }) => {
         shadow-lg ${!isPending && `hover:shadow-2xl hover:shadow-${link.color.split('-')[1]}-500/30 hover:-translate-y-1 hover:scale-[1.02]`}
         transform transition-all duration-300
         flex flex-col items-start justify-between
-        min-h-[160px] sm:min-h-[200px] w-full text-left
+        min-h-[180px] sm:min-h-[220px] w-full text-left
       `}
     >
       {/* Background Decorative Overlay */}
@@ -35,6 +35,11 @@ const LevelButton: React.FC<LevelButtonProps> = ({ link, onSelect }) => {
         <h3 className="text-2xl font-bold text-white sm:text-3xl tracking-tight">
           {link.label}
         </h3>
+        {link.description && (
+          <p className="mt-1 text-sm font-medium text-white/80 line-clamp-2">
+            {link.description}
+          </p>
+        )}
         {isPending && (
           <span className="mt-2 inline-block rounded bg-black/30 px-2 py-1 text-xs font-medium text-white/90">
             Coming Soon
