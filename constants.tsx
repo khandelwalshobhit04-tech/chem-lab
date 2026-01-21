@@ -32,7 +32,6 @@ const IconLevel6 = () => (
   </svg>
 );
 
-
 export const LEVEL_LINKS: LevelLink[] = [
   {
     id: 'level-1-2',
@@ -61,17 +60,17 @@ export const LEVEL_LINKS: LevelLink[] = [
   {
     id: 'level-5',
     label: 'Level 5',
-    url: 'https://orbital-master-mo-theory-level-5.vercel.app/',
-    color: 'from-rose-500 to-pink-500',
-    icon: <IconLevel5 />,
-    description: 'Advanced MO Theory Mastery'
-  },
-  {
-    id: 'level-6',
-    label: 'Level 6',
     url: 'https://orbital-matches.vercel.app/',
     color: 'from-violet-600 to-purple-500',
     icon: <IconLevel6 />,
     description: 'The Ultimate Orbital Matching Challenge'
+  },
+  {
+    id: 'level-6',
+    label: 'Level 6',
+    url: 'https://orbital-master-mo-theory-level-5.vercel.app/',
+    color: 'from-rose-500 to-pink-500',
+    icon: <IconLevel5 />,
+    description: 'Advanced MO Theory Mastery'
   }
 ];
